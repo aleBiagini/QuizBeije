@@ -1,0 +1,9 @@
+﻿@model IEnumerable<QuizBeije.Models.Quiz>
+
+@foreach (var item in Model)
+{
+    <div>
+        @item.QuizName
+        <hr />
+    </div>
+}
