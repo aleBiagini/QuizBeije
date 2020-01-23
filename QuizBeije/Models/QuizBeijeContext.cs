@@ -29,7 +29,7 @@ namespace QuizBeije.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("ConnectionStringsServer=tcp:stanza6.database.windows.net,1433;Initial Catalog=QuizBeije;Persist Security Info=False;User ID=ale;Password=Sicurezza6!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+                optionsBuilder.UseSqlServer("Server=tcp:stanza6.database.windows.net,1433;Initial Catalog=QuizBeije;Persist Security Info=False;User ID=ale;Password=Sicurezza6!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             }
         }
 

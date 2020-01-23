@@ -1,0 +1,56 @@
+﻿@model QuizBeije.Models.Quiz
+
+<h1>Quiz</h1>
+<form method="post">
+    @foreach (var question in Model.Questions)
+    {
+        <h3 class="text-center">@question.QuestionText</h3>
+        @foreach (var choice in question.Choices)
+        {
+            <input class="btn btn-block btn-secondary click-me" value="@choice.ChoiceText">
+        }
+    }
+    <button disbled class="btn btn-success" asp-controller="Quiz" asp-action="SendQuiz">Click Me</button>
+</form>
+<div class="quiz-container">
+    <div id="quiz"></div>
+</div>
+<button id="previous">Previous Question</button>
+<button id="next">Next Question</button>
+<button id="submit">Submit Quiz</button>
+<div id="results"></div>
+<script>
+    var isClicked = false;
+    var answerCount = 0
+    var numeroRispostePerDomanda = 2;
+    var elementi = document.querySelectorAll('.click-me');
+    var numeroElementi = elementi.length;
+    var numeroRisposteGiusto = numeroElementi / numeroRispostePerDomanda;
+    for (var i = 0; i < numeroElementi; i++) {
+        elementi[i].className = 'btn btn-block btn-secondary click-me el-' + i
+    }
+    document.addEventListener('click', function (event) {
+        toggleColors(event);
+    }, false);
+
+    function toggleColors(event) {
+        if (!event.target.matches('.click-me')) return;
+        event.preventDefault();
+        if (event.target.matches('.btn-secondary')) {
+            isClicked = true;
+            event.target.className = 'btn btn-block btn-success click-me';
+            answerCount++;
+            console.log(answerCount);
+            return;
+        } else {
+            isClicked = false;
+            event.target.className = 'btn btn-block btn-secondary click-me';
+            answerCount--;
+            console.log(answerCount);
+            return;
+        }
+    }
+    function checkAnswerIsLegal() {
+        elementi
+    }
+</script>
